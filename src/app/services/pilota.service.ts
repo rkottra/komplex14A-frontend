@@ -8,7 +8,18 @@ import { CsapatModel, PilotaModel } from '../models/pilota.model';
 })
 export class PilotaService {
 
-  constructor(private http:HttpClient) { }
+  public token:string = "";
+
+  constructor(private http:HttpClient) {
+
+    this.http.get("http://localhost:8000/api/token", {"responseType":"text"}).subscribe(
+      (szerverrőladat) => {
+          this.token = szerverrőladat;
+          console.log(this.token);
+      }
+    )
+
+  }
 
   getPilotak() : Observable<PilotaModel[]> {
     return this.http
@@ -38,5 +49,9 @@ export class PilotaService {
             return segédtömb;
           })
         );
+  }
+
+  deletePilota( id : number) :Observable<any> {
+    return this.http.delete("http://localhost:8000/api/pilotak/"+id);
   }
 }

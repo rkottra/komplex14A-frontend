@@ -15,19 +15,20 @@ export class PilotaComponent implements OnInit {
     
     this.szervíz.getPilotak().subscribe(szerverről_érkező => {
       this.pilotak = szerverről_érkező;
-
-      this.pilotak[0].csapat.csapatnemzet = "dajda";
-      
-      //CsapatModel.CsapatLista[0].csapatnemzet = "valami";
-      //console.log(this.pilotak[0].csapat.csapatnemzet);
-      
-      
     });
-
-    
+  }
+  
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  torles(id:number) {
+    this.szervíz.deletePilota(id).subscribe(
+      () => {
+        this.szervíz.getPilotak().subscribe(szerverről_érkező => {
+          this.pilotak = szerverről_érkező;
+        });
+      }
+    );
   }
 
 }

@@ -1,13 +1,47 @@
-<table border="1">
-    <tr *ngFor="let pilota of pilotak">
-        <td>{{pilota.ID}}</td> 
-        <td>{{pilota.nev}}</td> 
-       <td>{{pilota.szuletes}}</td> 
-       <td>{{pilota.nemzet}}</td> 
-       <td>{{pilota.magassag}}</td> 
+<p-table [value]="pilotak" [paginator]="true" [rows]="4">
+    <ng-template pTemplate="header" >
+        <tr>
+            <th pSortableColumn="ID">
+                ID
+                <p-sortIcon field="ID"></p-sortIcon>
+                <p-columnFilter type="text" field="ID" display="menu"></p-columnFilter>
+            </th> 
+            <th pSortableColumn="nev">
+                Név
+                <p-sortIcon field="nev"></p-sortIcon>
+                <p-columnFilter type="text" field="nev" display="menu"></p-columnFilter>
+            </th> 
+            <th pSortableColumn="szuletes">Születés dátuma<p-sortIcon field="szuletes"></p-sortIcon></th> 
+            <th pSortableColumn="nemzet">Nemzetiség<p-sortIcon field="nemzet"></p-sortIcon></th> 
+            <th pSortableColumn="magassag">Magasság<p-sortIcon field="magassag"></p-sortIcon></th> 
 
-       <td>{{pilota.csapat.csapatid}}</td> 
-       <td>{{pilota.csapat.csapatnev}}</td> 
-       <td>{{pilota.csapat.csapatnemzet}}</td> 
-    </tr>
-</table>
+            <th pSortableColumn="csapat.csapatid">Csapat Id<p-sortIcon field="csapat.csapatid"></p-sortIcon></th> 
+            <th pSortableColumn="csapat.csapatnev">Csapat név<p-sortIcon field="csapat.csapatnev"></p-sortIcon></th> 
+            <th pSortableColumn="csapat.csapatnemzet">Csapat nemzetiség<p-sortIcon field="csapat.csapatnemzet"></p-sortIcon></th>
+            
+        </tr>
+        <tr>
+            <p-columnFilter type="text" field="nev" matchMode="contains"></p-columnFilter>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-pilota>
+        <tr>
+            <td>{{pilota.ID}}</td> 
+            <td>{{pilota.nev}}</td> 
+            <td>{{pilota.szuletes}}</td> 
+            <td>{{pilota.nemzet}}</td> 
+            <td>{{pilota.magassag}}</td> 
+
+            <td>{{pilota.csapat.csapatid}}</td> 
+            <td>{{pilota.csapat.csapatnev}}</td> 
+            <td>{{pilota.csapat.csapatnemzet}}</td>
+            
+            <td>
+                <button pButton pRipple icon="pi pi-trash" 
+                    class="p-button-rounded p-button-warning"
+                        (click)="torles(pilota.ID)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
