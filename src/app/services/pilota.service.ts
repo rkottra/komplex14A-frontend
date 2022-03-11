@@ -54,4 +54,12 @@ export class PilotaService {
   deletePilota( id : number) :Observable<any> {
     return this.http.delete("http://localhost:8000/api/pilotak/"+id);
   }
+
+  insertPilota( pilota : PilotaModel) :Observable<any> {
+    return this.http.put("http://localhost:8000/api/pilotak/", pilota);
+  }
+
+  updatePilota( pilota : PilotaModel) :Observable<any> {
+    return this.http.post("http://localhost:8000/api/pilotak/"+pilota.ID, pilota);
+  }
 }

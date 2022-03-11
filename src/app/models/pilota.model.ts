@@ -6,7 +6,7 @@ export class PilotaModel {
     public nemzet:string = "";
     public magassag:number = 0;
 
-    public csapat: CsapatModel = new CsapatModel("");
+    public csapat: CsapatModel = new CsapatModel();
 }
 
 export class CsapatModel {
@@ -17,11 +17,13 @@ export class CsapatModel {
     public csapatnev: string = "";
     public csapatnemzet:string = "";
 
-    constructor(element: any) {
-        this.csapatid = element.csapatid;  
-        this.csapatnev = element.csapatnev;
-        this.csapatnemzet = element.csapatnemzet;
+    constructor(element: any = null) {
+        if (element !== null) {
+            this.csapatid = element.csapatid;  
+            this.csapatnev = element.csapatnev;
+            this.csapatnemzet = element.csapatnemzet;
 
-        CsapatModel.CsapatLista.push(this);
+            CsapatModel.CsapatLista.push(this);
+        }
     }
 }
