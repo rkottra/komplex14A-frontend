@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('komplex14A-frontend');
   });
 
-  it('should render title', () => {
+  it('Stimmel-e a címe (h1) a weboldalnak: Pilóták', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('komplex14A-frontend app is running!');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Pilóták');
   });
 });

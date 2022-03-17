@@ -58,29 +58,30 @@
 
 
 <p-dialog header="Új pilóta hozzáadása" [(visible)]="display" 
-    [style]="{width: '50vw', height: '90vh'}" [modal]="true">
+    [style]="{width: '50vw', height: '90vh'}" [modal]="true" >
     
     <br />
     <span class="p-float-label">
-        <input pInputText  type="text" [(ngModel)]="ujpilota.nev" />
+        <input pInputText  type="text" [(ngModel)]="ujpilota.nev" required />
         <label for="float-input">Pilóta neve</label>
     </span>
 
     <br /><br />
     <span class="p-float-label">
-        <p-calendar [(ngModel)]="ujpilota.szuletes" dateFormat="yy-mm-dd"></p-calendar>
+        <p-calendar [(ngModel)]="ujpilota.szuletes" dateFormat="yy-mm-dd" ></p-calendar>
         <label for="float-input">Pilóta születési dátuma</label>
     </span>
     
     <br /><br />
     <span class="p-float-label">
-        <p-inputNumber [showButtons]="true" [(ngModel)]="ujpilota.magassag" ></p-inputNumber>
+        <p-inputNumber [showButtons]="true" [(ngModel)]="ujpilota.magassag"  ></p-inputNumber>
         <label for="float-input">Pilóta magassága</label>
     </span>
 
     <br /><br />
     <span class="p-float-label">
-        <p-dropdown [options]="csapatok" [(ngModel)]="ujpilota.csapat" optionLabel="csapatnev"></p-dropdown>
+        <p-dropdown [options]="csapatok" [(ngModel)]="ujpilota.csapat"  optionLabel="csapatnev"
+            id="lenyilolista"></p-dropdown>
         <label for="float-input">Pilóta magassága</label>
     </span>
     
